@@ -110,7 +110,7 @@ export default function SegmentsPage() {
       body: JSON.stringify({
         name,
         description: `${logic} logic: ${rules.map(r => `${r.field} ${r.op} ${r.value}`).join(`, ${logic} `)}`,
-        rules: rules.map(r => ({ ...r, value: parseFloat(r.value) })),
+        rules: rules.map(r => ({ ...r, value: r.value })),
         customerIds: preview.allIds,
       }),
     })
@@ -297,7 +297,7 @@ export default function SegmentsPage() {
                     <Plus className="w-3 h-3" /> Add condition
                   </button>
 
-                  <button onClick={() => handlePreview(rules.map(r => ({ ...r, value: parseFloat(r.value) })))}
+                  <button onClick={() => handlePreview(rules.map(r => ({ ...r, value: r.value })))}
                     disabled={previewing || !canPreview}
                     className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#131315] border border-[#c0c1ff]/50 text-[#c0c1ff] text-xs font-semibold rounded-lg hover:bg-[#c0c1ff]/10 disabled:opacity-40 transition-all">
                     {previewing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Users className="w-4 h-4" />}
